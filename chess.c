@@ -9,12 +9,18 @@
  
 ─ │ ┼
  
+ might need these...
+ 
+ ╟ ╢ ╧ ╤
+ 
 */
 void showBoard (int board[8][8]) {
+
 	printf("\n\n┌─┬─┬─┬─┬─┬─┬─┬─┐\n");
 	for (int i = 0; i < 8; i++) {
 //		printf("│"); 
 		bool flag = true;
+
 		for (int j = 0; j < 8; j++) {
 			if (!flag) {
 				printf("│"); 
@@ -41,12 +47,14 @@ void showBoard (int board[8][8]) {
 					printf("♙");
 			}
 		}
+
 		printf("│\n") ;
 		if (i < 7) {
 			printf("├─┼─┼─┼─┼─┼─┼─┼─┤\n") ;
 		}
 	}
 	printf("└─┴─┴─┴─┴─┴─┴─┴─┘\n");
+
 }
 
 int main () {
