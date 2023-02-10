@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 bool isValidMove (int x1, int x2, int y1, int y2, int board[8][8]) ;
 
 int main () {
@@ -22,20 +23,18 @@ int main () {
 	
 // 	showBoard(board);
 
-  printf("Enter `q` to quit at any time.\n");
-  printf("Moves are entered as co-ordinate pairs, such as \"13-33\" \n");
-  do {
-    if (whitesMove) {
-      printf("White to move.\n");
-    } else {
-      printf("Black to move.\n");
-    }
-    printf("♔ >> ");
-    scanf("%s", buf);
-  } while (buf[0] != 'q' && buf[0] != 'Q') ;
-    
-	printf("Terminating...\n") ;
-}
+
+├ ┤ ┬ ┴
+ 
+─ │ ┼
+ 
+ might need these...
+ 
+ ╟ ╢ ╧ ╤
+ 
+*/
+void showBoard (int board[8][8]) {
+
 
 bool isValidMove (int x1, int x2, int y1, int y2, int board[8][8]) {
 	if (board[x1][x2] == 0) {
@@ -61,12 +60,57 @@ bool isValidMove (int x1, int x2, int y1, int y2, int board[8][8]) {
 		} else if (y1 - y2 == 2 && x1 == x2) { // forward two
 			if (board[x1][y2] == 0 && board[x1][y2+1] == 0) {
 				return true;
+
 			}
-		} else if (abs(x1 - x2) == 1 && y1-y2 == 1) { // capture left or right
-			if (board[x2][y2] != 0) {
-				return true;
+			flag = false;
+//			printf(""); 
+			switch (board[i][j]) {
+				case 0: 
+					printf(" ");
+					break;
+				case 1:
+					printf("♔");
+					break;
+				case 2: 
+					printf("♕");
+					break;
+				case 3: 
+					printf("♗");
+					break;
+				case 4: 
+					printf("♘");
+					break;
+				case 5: 
+					printf("♙");
 			}
 		}
-		return false;
+
+		printf("│\n") ;
+		if (i < 7) {
+			printf("├─┼─┼─┼─┼─┼─┼─┼─┤\n") ;
+		}
 	}
+	printf("└─┴─┴─┴─┴─┴─┴─┴─┘\n");
+
+}
+
+int main () {
+	printf("Welcome to Terminal Chess!\n");
+	printf("Initializing Board...")	;
+	int board [8][8] = { {5, 4, 3, 2, 1, 3, 4, 5}
+				       , {6, 6, 6, 6, 6, 6, 6, 6}
+				 	   , {0, 0, 0, 0, 0, 0, 0, 0}
+					   , {0, 0, 0, 0, 0, 0, 0, 0}
+				       , {0, 0, 0, 0, 0, 0, 0, 0} 
+				       , {0, 0, 0, 0, 0, 0, 0, 0}
+				       , {6, 6, 6, 6, 6, 6, 6, 6}
+				       , {5, 4, 3, 2, 1, 3, 4, 5}
+				       } ;
+	printf("Board Initialized!") ;
+	
+	showBoard(board);
+	
+	// rest of game...
+	
+	printf("Terminating...") ;
 }
